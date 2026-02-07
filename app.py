@@ -1,7 +1,6 @@
 import streamlit as st
 from datetime import date
 import time
-import base64
 import random
 
 # ================= PAGE CONFIG =================
@@ -13,14 +12,14 @@ USER_1 = "Shweta"
 USER_2 = "Ajjuu"
 
 DAYS = [
-    ("🌹 Rose Day", date(2026, 2, 7), "Ajjuu 🌹\n\nTu mazhya ayushyatla sabse sundar rose aahe ❤️\nTujhya sobat pratyek divas khup special vatto 💞 HAPPY ROSE DAY PILLAAAA"),
-    ("💍 Propose Day", date(2026, 2, 8), "Ajjuu 💍\n\nTu ho YES bolshil ka?\nMazya life cha forever partner banashil ka? ❤️"),
-    ("🍫 Chocolate Day", date(2026, 2, 9), "Ajjuu 🍫\n\nTu chocolate sarkha sweet aahe 💖\nEkda taste ghetla ki sodavat nahi 😄HAPPY CHOCOLATE DAY CHOCOO"),
-    ("🧸 Teddy Day", date(2026, 2, 10), "Ajjuu 🧸\n\nTeddy nahi pan tu majha comfort aahe 🤗 HAPPY TEDDY DAY "),
-    ("🤞 Promise Day", date(2026, 2, 11), "Ajjuu 🤞\n\nPromise — good days, bad days,\nSaglya divsat tujhya sobat ❤️"),
-    ("🤗 Hug Day", date(2026, 2, 12), "Ajjuu 🤗\n\nEk tight hug…\nSagla stress nighun jail ❤️"),
-    ("💋 Kiss Day", date(2026, 2, 13), "Ajjuu 💋\n\nEk nahi… hazaar kisses pending aahet 😘"),
-    ("❤️ Valentine’s Day", date(2026, 2, 14), "Ajjuu ❤️\n\nTu majha Valentine aahe.\nAaj, उद्या ani forever 💞 HAPPY VALENTINE DAY")
+    ("🌹 Rose Day", date(2026, 2, 7), "Ajjuu 🌹\n\nAjju, tu majha favourite rose aahe 🌹Red nahi, pink nahi… \n\ntu mera dil-rose hai ❤️\n\nTu Jab bhi muskuraata hai na, meri duniya aur bhi khil jaati hai 💕❤️\n\nHAPPY ROSE DAY PILLAAAA"),
+    ("💍 Propose Day", date(2026, 2, 8), "Ajjuu 💍\n\nTu ho YES bolshil ka?\nwords thode kam pad jaate hain jab tujhe explain karna hota hai 🫶\n\nBut simple sa propose hai \n\n—Will you be my forever person?\n\nAaj, kal aur hamesha 💍❤️"),
+    ("🍫 Chocolate Day", date(2026, 2, 9), "Ajjuu 🍫\n\nchocolates sweet hoti hain 🍫\n\nPar tu unse bhi zyada sweet hai 😌\n\nEk bite chocolate ka aur ek smile teri — dono mujhe happy kar dete hain 💕\n\nHappy Chocolate Day ❤️"),
+    ("🧸 Teddy Day", date(2026, 2, 10), "Ajjuu 🧸\n\nteddy soft hota hai 🧸\n\nPar tera hug usse bhi zyada warm hai 🤍\n\nAgar tu teddy hota na, main tujhe kabhi shelf pe nahi rakhti…\n\nSeedha dil ke paas 🫶🤗\n\nHappy Teddy Day ❤️"),
+    ("🤞 Promise Day", date(2026, 2, 11), "Ajjuu 🤞\n\npromise karti hoon 💍\n\nTere saath hasungi, roothungi, sambhaalungi aur samjhungi 💖\n\nLife thodi messy ho sakti hai,\n\nPar mera saath hamesha tera rahega 🤞"),
+    ("🤗 Hug Day", date(2026, 2, 12), "Ajjuu 🤗\n\nek hug tera 🤗\n\nSaari tension, saari thakaan gayab kar deta hai 💞\n\nKabhi words na mile na, bas mujhe tightly hug kar lena…\n\nMain samajh jaungi ❤️\n\nHappy Hug Day ❤️"),
+    ("💋 Kiss Day", date(2026, 2, 13), "Ajjuu 💋\n\nkiss sirf lips pe nahi hoti 💋\n\nKabhi forehead pe care wali,\n\nKabhi aankhon pe trust wali,\n\nAur kabhi smile pe pyaar wali 😘\n\nSab teri hi hain 🤍\n\nHappy Kiss Day Babyyy❤️"),
+    ("❤️ Valentine’s Day", date(2026, 2, 14), "Ajjuu ❤️\n\ntu mera Valentine hi nahi…\n\nTu meri habit, meri safe place, meri favorite feeling hai ❤️\n\nAaj bhi, kal bhi, aur har Valentine ke din\n\nIt will always be you 💕🌍\n\nHappy Valentine’s Day Jivv❤️")
 ]
 
 # ================= STYLE =================
@@ -44,17 +43,6 @@ body {
     color: #777;
 }
 
-.popup {
-    background: black;
-    padding: 30px;
-    border-radius: 18px;
-    font-family: monospace;
-    font-size: 18px;
-    color: #00ff9c;
-    box-shadow: 0 0 30px #ff4d6d;
-    text-align: center;
-}
-
 .heart {
     position: fixed;
     animation: floatUp 8s linear infinite;
@@ -69,35 +57,19 @@ body {
 """, unsafe_allow_html=True)
 
 # ================= FLOATING HEARTS =================
-hearts = ""
 for _ in range(15):
-    hearts += f"""
-    <div class="heart" style="
-        left:{random.randint(0,100)}%;
-        animation-delay:{random.uniform(0,5)}s;
-        font-size:{random.randint(18,30)}px;
-        color:#ff4d6d;">❤️</div>
-    """
-st.markdown(hearts, unsafe_allow_html=True)
-
-# ================= AUDIO =================
-def autoplay_audio(file):
-    with open(file, "rb") as f:
-        data = f.read()
-    b64 = base64.b64encode(data).decode()
-    st.markdown(f"""
-    <audio autoplay loop>
-        <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
-    </audio>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        f"<div class='heart' style='left:{random.randint(0,100)}%;"
+        f"animation-delay:{random.uniform(0,5)}s;"
+        f"font-size:{random.randint(18,30)}px;'>❤️</div>",
+        unsafe_allow_html=True
+    )
 
 # ================= SESSION =================
 if "auth" not in st.session_state:
     st.session_state.auth = False
-if "popup_msg" not in st.session_state:
-    st.session_state.popup_msg = None
-if "typed_done" not in st.session_state:
-    st.session_state.typed_done = False
+if "active_msg" not in st.session_state:
+    st.session_state.active_msg = None
 
 # ================= PASSWORD =================
 if not st.session_state.auth:
@@ -111,11 +83,12 @@ if not st.session_state.auth:
             st.error("Wrong password 😜")
     st.stop()
 
-# ================= PLAY MUSIC =================
-autoplay_audio("romantic.mp3")
-
 # ================= HEADER =================
 st.markdown(f"### 💻 Love_Terminal.exe  \n**User:** {USER_1} ❤️ {USER_2}")
+
+# ================= MUSIC (MOBILE SAFE) =================
+st.markdown("### 🎵 Background Music")
+st.audio("romantic.mp3")
 
 # ================= GRID =================
 today = date.today()
@@ -125,31 +98,20 @@ for i, (name, unlock, msg) in enumerate(DAYS):
     with cols[i % 4]:
         if today >= unlock:
             if st.button(name):
-                st.session_state.popup_msg = msg
-                st.session_state.typed_done = False
+                st.session_state.active_msg = msg
         else:
             st.markdown(f"<div class='card locked'>{name}<br>🔒 Locked</div>", unsafe_allow_html=True)
 
-# ================= POPUP =================
-if st.session_state.popup_msg:
-    st.markdown("---")
-    st.markdown("<div class='popup'>", unsafe_allow_html=True)
-
-    placeholder = st.empty()
-    text = ""
-
-    if not st.session_state.typed_done:
-        for ch in st.session_state.popup_msg:
-            text += ch
-            placeholder.markdown(f"`{text}`")
+# ================= REAL POPUP (STREAMLIT DIALOG) =================
+if st.session_state.active_msg:
+    with st.dialog("💌 For Ajjuu"):
+        typed = ""
+        placeholder = st.empty()
+        for ch in st.session_state.active_msg:
+            typed += ch
+            placeholder.markdown(f"`{typed}`")
             time.sleep(0.04)
-        st.session_state.typed_done = True
-    else:
-        st.markdown(f"`{st.session_state.popup_msg}`")
 
-    if st.button("❌ Close"):
-        st.session_state.popup_msg = None
-        st.session_state.typed_done = False
-        st.rerun()
-
-    st.markdown("</div>", unsafe_allow_html=True)
+        if st.button("❤️ Close"):
+            st.session_state.active_msg = None
+            st.rerun()
