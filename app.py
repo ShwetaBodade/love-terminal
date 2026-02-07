@@ -3,10 +3,8 @@ from datetime import date
 import time
 import random
 
-# ================= PAGE CONFIG =================
 st.set_page_config(page_title="Love_Terminal.exe", layout="wide")
 
-# ================= CONSTANTS =================
 PASSWORD = "AjjuuOnly"
 USER_1 = "Shweta"
 USER_2 = "Ajjuu"
@@ -22,7 +20,8 @@ DAYS = [
     ("❤️ Valentine’s Day", date(2026, 2, 14), "Ajjuu ❤️\n\ntu mera Valentine hi nahi…\n\nTu meri habit, meri safe place, meri favorite feeling hai ❤️\n\nAaj bhi, kal bhi, aur har Valentine ke din\n\nIt will always be you 💕🌍\n\nHappy Valentine’s Day Jivv❤️")
 ]
 
-# ================= STYLE =================
+
+# ---------- STYLE ----------
 st.markdown("""
 <style>
 body {
@@ -43,35 +42,33 @@ body {
     color: #777;
 }
 
-.heart {
-    position: fixed;
-    animation: floatUp 8s linear infinite;
-}
-
-@keyframes floatUp {
-    0% {transform: translateY(100vh) scale(0.5); opacity:0;}
-    10% {opacity:1;}
-    100% {transform: translateY(-10vh) scale(1.4); opacity:0;}
+.popup {
+    background: black;
+    padding: 25px;
+    border-radius: 18px;
+    font-family: monospace;
+    font-size: 18px;
+    color: #00ff9c;
+    box-shadow: 0 0 30px #ff4d6d;
 }
 </style>
 """, unsafe_allow_html=True)
 
-# ================= FLOATING HEARTS =================
-for _ in range(15):
+# ---------- HEARTS ----------
+for _ in range(12):
     st.markdown(
-        f"<div class='heart' style='left:{random.randint(0,100)}%;"
-        f"animation-delay:{random.uniform(0,5)}s;"
-        f"font-size:{random.randint(18,30)}px;'>❤️</div>",
+        f"<div style='position:fixed;left:{random.randint(0,100)}%;"
+        f"animation: floatUp 8s linear infinite;font-size:24px;'>❤️</div>",
         unsafe_allow_html=True
     )
 
-# ================= SESSION =================
+# ---------- SESSION ----------
 if "auth" not in st.session_state:
     st.session_state.auth = False
 if "active_msg" not in st.session_state:
     st.session_state.active_msg = None
 
-# ================= PASSWORD =================
+# ---------- PASSWORD ----------
 if not st.session_state.auth:
     st.title("🔐 Love_Terminal.exe")
     pwd = st.text_input("Enter password", type="password")
@@ -83,14 +80,13 @@ if not st.session_state.auth:
             st.error("Wrong password 😜")
     st.stop()
 
-# ================= HEADER =================
+# ---------- HEADER ----------
 st.markdown(f"### 💻 Love_Terminal.exe  \n**User:** {USER_1} ❤️ {USER_2}")
 
-# ================= MUSIC (MOBILE SAFE) =================
-st.markdown("### 🎵 Background Music")
+# ---------- MUSIC ----------
 st.audio("romantic.mp3")
 
-# ================= GRID =================
+# ---------- GRID ----------
 today = date.today()
 cols = st.columns(4)
 
@@ -102,16 +98,21 @@ for i, (name, unlock, msg) in enumerate(DAYS):
         else:
             st.markdown(f"<div class='card locked'>{name}<br>🔒 Locked</div>", unsafe_allow_html=True)
 
-# ================= REAL POPUP (STREAMLIT DIALOG) =================
+# ---------- POPUP MESSAGE ----------
 if st.session_state.active_msg:
-    with st.dialog("💌 For Ajjuu"):
-        typed = ""
-        placeholder = st.empty()
-        for ch in st.session_state.active_msg:
-            typed += ch
-            placeholder.markdown(f"`{typed}`")
-            time.sleep(0.04)
+    st.markdown("---")
+    st.markdown("<div class='popup'>", unsafe_allow_html=True)
 
-        if st.button("❤️ Close"):
-            st.session_state.active_msg = None
-            st.rerun()
+    placeholder = st.empty()
+    typed = ""
+
+    for ch in st.session_state.active_msg:
+        typed += ch
+        placeholder.markdown(f"`{typed}`")
+        time.sleep(0.04)
+
+    if st.button("❌ Close"):
+        st.session_state.active_msg = None
+        st.rerun()
+
+    st.markdown("</div>", unsafe_allow_html=True)
