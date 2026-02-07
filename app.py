@@ -13,14 +13,14 @@ USER_1 = "Shweta"
 USER_2 = "Ajjuu"
 
 DAYS = [
-    ("🌹 Rose Day", date(2026, 2, 7), "Ajjuu 🌹\n\nTu mazhya ayushyatla sabse sundar rose aahe ❤️\nTujhya sobat pratyek divas khup special vatto 💞"),
+    ("🌹 Rose Day", date(2026, 2, 7), "Ajjuu 🌹\n\nTu mazhya ayushyatla sabse sundar rose aahe ❤️\nTujhya sobat pratyek divas khup special vatto 💞 HAPPY ROSE DAY PILLAAAA"),
     ("💍 Propose Day", date(2026, 2, 8), "Ajjuu 💍\n\nTu ho YES bolshil ka?\nMazya life cha forever partner banashil ka? ❤️"),
-    ("🍫 Chocolate Day", date(2026, 2, 9), "Ajjuu 🍫\n\nTu chocolate sarkha sweet aahe 💖\nEkda taste ghetla ki sodavat nahi 😄"),
-    ("🧸 Teddy Day", date(2026, 2, 10), "Ajjuu 🧸\n\nTeddy nahi pan tu majha comfort aahe 🤗"),
+    ("🍫 Chocolate Day", date(2026, 2, 9), "Ajjuu 🍫\n\nTu chocolate sarkha sweet aahe 💖\nEkda taste ghetla ki sodavat nahi 😄HAPPY CHOCOLATE DAY CHOCOO"),
+    ("🧸 Teddy Day", date(2026, 2, 10), "Ajjuu 🧸\n\nTeddy nahi pan tu majha comfort aahe 🤗 HAPPY TEDDY DAY "),
     ("🤞 Promise Day", date(2026, 2, 11), "Ajjuu 🤞\n\nPromise — good days, bad days,\nSaglya divsat tujhya sobat ❤️"),
     ("🤗 Hug Day", date(2026, 2, 12), "Ajjuu 🤗\n\nEk tight hug…\nSagla stress nighun jail ❤️"),
     ("💋 Kiss Day", date(2026, 2, 13), "Ajjuu 💋\n\nEk nahi… hazaar kisses pending aahet 😘"),
-    ("❤️ Valentine’s Day", date(2026, 2, 14), "Ajjuu ❤️\n\nTu majha Valentine aahe.\nAaj, उद्या ani forever 💞")
+    ("❤️ Valentine’s Day", date(2026, 2, 14), "Ajjuu ❤️\n\nTu majha Valentine aahe.\nAaj, उद्या ani forever 💞 HAPPY VALENTINE DAY")
 ]
 
 # ================= STYLE =================
